@@ -1,19 +1,32 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow
+# import sys
+# import qdarkstyle
+# from PyQt6 import uic
+# from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog
 
-class HelloWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.initUI()
 
-    def initUI(self):
-        self.setWindowTitle('Hello Window')
-        label = QLabel('Hello', self)
-        label.move(50, 50)
-        self.setGeometry(100, 100, 200, 150)
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         uic.loadUi("main_window.ui", self)  # Load the .ui file
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = HelloWindow()
-    window.show()
-    sys.exit(app.exec_())
+#         # Connect the button to the function
+#         self.openTurntableButton.clicked.connect(self.openTurntable)
+
+#     def openTurntable(self):
+#         options = QFileDialog.Options()
+#         fileName, _ = QFileDialog.getOpenFileName(self, "Open Video File", "", "Video Files (*.mp4 *.avi *.mov);;All Files (*)", options=options)
+
+
+# if __name__ == "__main__":
+#     # create the application and the main window
+#     app = QApplication(sys.argv)
+
+#     # setup stylesheet
+#     app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+#     # or in new API
+#     app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api="pyqt5"))
+
+#     window = MainWindow()
+#     window.show()
+
+#     sys.exit(app.exec_())

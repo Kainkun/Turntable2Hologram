@@ -1,0 +1,6 @@
+from moviepy import *  # MoviePy v2 imports everything directly
+from moviepy.video.io.VideoFileClip import VideoFileClip
+from moviepy.video.compositing import CompositeVideoClip
+from moviepy.video.VideoClip import TextClip
+
+
