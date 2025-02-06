@@ -23,7 +23,7 @@ from PIL import Image
 import imagehash
 import atexit
 
-TEMP_FOLDER = "temp"
+TEMP_FOLDER = "_tempFrames"
 SUPPORTED_EXPORT_FORMATS = (".png", ".jpg", ".jpeg", ".bmp")
 TEMP_FRAME_FORMAT = "jpeg"
 HOLOGRAM_FRAME_FORMAT = "jpeg"
@@ -137,7 +137,7 @@ class VideoToImageThread(QThread):
         self.running = False
 
 
-class ImageSequencePlayer(QWidget):
+class Turntable2Hologram(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -386,34 +386,11 @@ class ImageSequencePlayer(QWidget):
         if not self.valid_frames:
             return
 
-        # new_folder_dialog = QFileDialog(self)
-        # new_folder_dialog.setFileMode(QFileDialog.FileMode.Directory)
-        # new_folder_dialog.setOption(QFileDialog.Option.ShowDirsOnly, True)
-        # new_folder_dialog.setAcceptMode(QFileDialog.AcceptMode.AcceptSave)
-        # new_folder_dialog.setLabelText(QFileDialog.DialogLabel.Accept, "Create")
-        # new_folder_dialog.setWindowTitle("Save As Hologram")
-        # new_folder_dialog.setDirectory(os.getcwd())
-        # if new_folder_dialog.exec():
-        #     output_folder = new_folder_dialog.selectedFiles()[0]
-        #     os.makedirs(output_folder)
-        # else:
-        #     return
-
-        # if os.path.exists(output_folder):
-        #     reply = QMessageBox.question(
-        #         self,
-        #         "Folder Exists",
-        #         "The selected folder already exists. Do you want to override it?",
-        #         QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
-        #     )
-        #     if reply == QMessageBox.StandardButton.No:
-        #         return
-
         video_name = os.path.splitext(
             os.path.basename(self.videoToImageThread.video_path)
         )[0]
 
-        output_folder = os.path.join(os.getcwd(), f"{video_name}_hologram")
+        output_folder = os.path.join(os.getcwd(), "Converted Holograms", f"{video_name}_hologram")
 
         counter = 1
         new_output_folder = output_folder
@@ -469,6 +446,6 @@ class ImageSequencePlayer(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    player = ImageSequencePlayer()
+    player = Turntable2Hologram()
     player.show()
     sys.exit(app.exec())
