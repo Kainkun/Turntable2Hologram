@@ -36,7 +36,8 @@ def compareImages(imageA, imageB):
     cutoff = 10  # Can be changed according to what works best for your images
 
     hashDiff = hash0 - hash1  # Finds the distance between the hashes of images
-    print(imageA, imageB, hashDiff)
+    if hashDiff < 10:
+        print(imageA, imageB, hashDiff)
     return hashDiff < cutoff
 
 
@@ -181,11 +182,11 @@ class Turntable2Hologram(QWidget):
         self.range_slider._min_label.setDisabled(True)
         self.range_slider._max_label.setDisabled(True)
 
-        self.loop_around_checkbox = QCheckBox("Flip Start and End Frames")
+        self.loop_around_checkbox = QCheckBox("Flip Start and End Frames (Wrap Around Frame Selection)")
 
-        self.clockwise_radio = QRadioButton("Clockwise")
-        self.clockwise_radio.setChecked(True)
         self.counter_clickwise_radio = QRadioButton("Counter Clockwise")
+        self.counter_clickwise_radio.setChecked(True)
+        self.clockwise_radio = QRadioButton("Clockwise")
 
         self.progress_bar = QProgressBar()
         self.progress_bar.setVisible(False)
@@ -200,8 +201,8 @@ class Turntable2Hologram(QWidget):
         layout.addWidget(self.image_title)
         layout.addWidget(self.image_label)
 
-        layout.addWidget(self.clockwise_radio)
         layout.addWidget(self.counter_clickwise_radio)
+        layout.addWidget(self.clockwise_radio)
         layout.addWidget(self.range_slider)
 
         frame_layout = QHBoxLayout()
